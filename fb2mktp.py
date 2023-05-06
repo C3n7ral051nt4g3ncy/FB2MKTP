@@ -10,6 +10,7 @@ import webbrowser
 import time
 import sys
 
+# FB2MKTP Banner
 print("""========================================================================
 =        ==      =======   =====  =====  ==  ====  ==        ==       ==
 =  ========  ===  ====   =   ===   ===   ==  ===  ======  =====  ====  =
@@ -71,7 +72,7 @@ for url in urls:
             'check': 'Lookup',
         }
 
-# Lookup-id.com headers
+        # Lookup-id.com headers
         headers = {
             'authority': 'lookup-id.com',
             'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/'
@@ -83,20 +84,21 @@ for url in urls:
 
         res = requests.post('https://lookup-id.com/', headers=headers, data=data)
         response = Selector(text=res.text, type="html")
+        
 
-# Extract ID using css selector
+        # Extract ID using css selector
         id = response.css('span#code::text').get()
 
-# Print user ID or let user know the ID wasn't found
+
+    # Print user ID or let user know the ID wasn't found
     if not id:
         id = 'Facebook ID Not found please try again'
     print()
     print(f'For the Facebook profile => {url}, the ID Found is ==> {id}')
 
-    time.sleep(3)
 
-# With the ID found, pivot straight to the Target Marketplace profile with automatic browser opening
-url = f'https://www.facebook.com/marketplace/profile/{id}'
-webbrowser.open(url)
+    # With the ID found, pivot straight to the Target Marketplace profile with automatic browser opening
+    marketplace_url = f'https://www.facebook.com/marketplace/profile/{id}'
+    webbrowser.open(marketplace_url)
 
 sys.exit(0)
