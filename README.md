@@ -43,6 +43,10 @@ pip3 install -r requirements.txt
 python3 fb2mktp.py
 ```
 
+# 🛠️ Fixing Errors
+
+- if the Facebook profile link you pasted does not provide any results, you will get the error --> ```Facebook ID Not Found please try again```, simply change IP address if you are using a VPN, and try a few more times and it should work fine.
+
 
 
 # 🗣️ Improvements and Feedback
